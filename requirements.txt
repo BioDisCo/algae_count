@@ -1,0 +1,3 @@
+cellpose_omni
+scikit-image
+omnipose
