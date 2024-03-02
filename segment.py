@@ -15,7 +15,7 @@ import pandas as pd
 
 CSV_FILENAME = 'cell_nr.csv'
 RESULTS_DIR = 'results'
-TIFF_DIR = "test/"
+TIFF_DIR = "tiffs/"  # place all tiffs there
 
 mpl.rcParams['figure.dpi'] = 600
 plt.style.use('dark_background')
@@ -89,22 +89,22 @@ for idx, img_name in enumerate(imgs.keys()):
     bdi = flows[idx][-1] # get boundaries
     flowi = flows[idx][0] # get RGB flows
 
-    # # show it for debugging
-    # fig = plt.figure(figsize=(4,1), dpi=4000)
-    # fig.patch.set_facecolor([0]*4)
-    # plot.show_segmentation(
-    #     fig,
-    #     omnipose.utils.normalize99(img), 
-    #     maski,
-    #     flowi,
-    #     bdi,
-    #     channels=chans,
-    #     omni=True,
-    #     interpolation=None)
-    # plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
-    # file_path = os.path.join(RESULTS_DIR, f"{str(idx).zfill(NUMBER_LENGTH)}.png")
-    # plt.savefig(file_path)
-    # plt.close()
+    # show it for debugging
+    fig = plt.figure(figsize=(4,1), dpi=4000)
+    fig.patch.set_facecolor([0]*4)
+    plot.show_segmentation(
+        fig,
+        omnipose.utils.normalize99(img), 
+        maski,
+        flowi,
+        bdi,
+        channels=chans,
+        omni=True,
+        interpolation=None)
+    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    file_path = os.path.join(RESULTS_DIR, f"debug-{img_name}.png")
+    plt.savefig(file_path)
+    plt.close()
 
     fig = plt.figure(figsize=(1,1), dpi=4000)
     fig.patch.set_facecolor([0]*4)
