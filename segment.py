@@ -55,7 +55,13 @@ for k in imgs.keys():
 
 print(f'available models: {MODEL_NAMES}')
 model_name = 'bact_phase_omni'
-model = models.CellposeModel(gpu=use_GPU, model_type=model_name)
+
+# use this to get models from the web
+# model = models.CellposeModel(gpu=use_GPU, model_type=model_name)
+
+# and this to get them locally
+model = models.CellposeModel(gpu=use_GPU, pretrained_model='models/bact_phase_omnitorch_0')
+
 chans = [0,0]  #this means segment based on first channel, no second channel 
 
 # define parameters
